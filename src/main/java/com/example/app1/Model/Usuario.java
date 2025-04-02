@@ -1,4 +1,4 @@
-package com.example.app1;
+package com.example.app1.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,10 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-
 public class Usuario {
    @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
    private String nombre;
    private String email;
@@ -18,10 +17,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id,String nombre, int edad,String email) {
+    public Usuario(String nombre, int edad,String email) {
         this.nombre = nombre;
         this.edad = edad;
-        this.id=id;
         this.email=email;
     }
 
