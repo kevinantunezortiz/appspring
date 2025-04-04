@@ -4,18 +4,23 @@ import com.example.app1.Model.Usuario;
 import com.example.app1.Repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
     @GetMapping
-    public List<Usuario> obtenerUsuarios(){
-        return usuarioRepository.findAll();
+    public String obtenerUsuarios(Model model){
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        model.addAttribute("usuarios",usuarios);
+        return "usuarios";
     }
     @GetMapping("/{id}")
     public Usuario obtenerUsuario(@PathVariable Long id){
